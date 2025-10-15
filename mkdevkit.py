@@ -100,6 +100,7 @@ def main():
         meson_config = env.load_meson_config(machine, flavor, build_dir)
         assert meson_config is not None
 
+    print(f"DEBUG: meson_config = {meson_config}", file=sys.stderr)
     try:
         app = devkit.CompilerApplication(kit, machine, meson_config, outdir, options.dep_symbol_scope)
         app.run()
