@@ -81,7 +81,12 @@ def main():
         meson_config = {"c": cc}
         for k, v in vars(options).items():
             if k in machine_options and v is not None:
-                name = "pkg-config" if k == "pkg_config" else k
+                if k == "pkg_config":
+                    name = "pkg-config"
+                elif k == "pkg_config_path":
+                    name = "pkg_config_path"
+                else:
+                    name = k
                 meson_config[name] = v
     else:
         build_dir = REPO_ROOT / "build"
