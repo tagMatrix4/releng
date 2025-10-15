@@ -120,7 +120,8 @@ def parse_array_option_value(val: str, ool_optvals: Dict[str, List[str]]) -> Opt
         ool_val = ool_optvals.get(val)
         if ool_val is not None:
             return ool_val
-    return [val]
+    # Split comma-separated values
+    return [item.strip() for item in val.split(",") if item.strip()]
 
 
 if __name__ == "__main__":
